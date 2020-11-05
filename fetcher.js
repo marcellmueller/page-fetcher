@@ -14,7 +14,13 @@ const writeFile = (responseContent, body) => {
     err
   ) {
     if (err) throw err;
-    console.log("Wrote response body to responseContent.txt!");
+    let stats = fs.statSync("responseContent.txt");
+    let fileSizeInBytes = stats["size"];
+    console.log(
+      "Wrote response body of " +
+        fileSizeInBytes +
+        " bytes to responseContent.txt!"
+    );
   });
   rl.close();
 };
